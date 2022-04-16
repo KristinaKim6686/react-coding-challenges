@@ -5,14 +5,14 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import "../styles/_app.scss";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   // dark mode toggle function
   const toggleMode = () => {
-    setDarkMode((darkMode = !darkMode));
+    setDarkMode((darkMode) => !darkMode);
   };
   return (
-    <div className="app">
+    <div className={darkMode ? "app dark-mode" : "app"}>
       <div className="level">
         <div>
           <h1 className="title">Dark Mode Challenge</h1>
