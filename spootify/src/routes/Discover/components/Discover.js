@@ -44,6 +44,24 @@ export default class Discover extends Component {
         this.setState({ newReleases: response.data.albums.items });
         console.log(response);
       });
+      axios("https://api.spotify.com/v1/browse/featured-playlists", {
+        headers: {
+          Authorization: "Bearer " + tokenResponse.data.access_token,
+        },
+        method: "GET",
+      }).then((response) => {
+        this.setState({ playlists: response.data.playlists.items });
+      });
+
+      // fetching categories
+      axios("https://api.spotify.com/v1/browse/categories", {
+        headers: {
+          Authorization: "Bearer " + tokenResponse.data.access_token,
+        },
+        method: "GET",
+      }).then((response) => {
+        this.setState({ categories: response.data.categories.items });
+      });
     });
   }
 
